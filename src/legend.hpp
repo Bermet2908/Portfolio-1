@@ -2,12 +2,12 @@
 
 using namespace std;
 void printLegend() {
-    cout << "Welcome to Farming Stimulator! 🧑‍🌾\n\n";
+    cout << "Welcome to Farming Stimulator! g++\n\n";
 
     cout<< "Your goal is to take care of your farm — move around, plant vegetables, harvest them, and end your day.\n"
            <<"Each new day, your plants grow and your farm comes to life!\n\n";
 
-    cout<< "🌱Game rules \n"
+    cout<< "Game rules \n"
 << " 1) The game starts on Day 1. \n"
 << " 2) You can only plant on empty soil.\n"
 << " 3) You can harvest only mature plants.\n"

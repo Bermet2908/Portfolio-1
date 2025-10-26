@@ -11,16 +11,10 @@ TEST_CASE( "it starts the player in row zero, column zero" ) {
   REQUIRE( player.column() == 0 );
 }
 
-TEST_CASE( "it moves the player to the right" ) {
+TEST_CASE("set_position updates player coordinates") {
   Player player;
-  player.move_right();
-  REQUIRE( player.row() == 0 );
-  REQUIRE( player.column() == 1 );
+  player.set_position(2, 3);
+  REQUIRE(player.row() == 2);
+  REQUIRE(player.column() == 3);
 }
 
-TEST_CASE( "it moves the player down" ) {
-  Player player;
-  player.move_down();
-  REQUIRE( player.row() == 1 );
-  REQUIRE( player.column() == 0 );
-}

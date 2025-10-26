@@ -40,28 +40,32 @@ void Farm::move_player_up() {
   int r = player->row();
   int c = player->column();
   int nr = r - 1;
-  if (in_bounds(nr, c)) player->set_position(nr, c);
+  if (in_bounds(nr, c))
+    player->set_position(nr, c);
 }
 
 void Farm::move_player_down() {
   int r = player->row();
   int c = player->column();
   int nr = r + 1;
-  if (in_bounds(nr, c)) player->set_position(nr, c);
+  if (in_bounds(nr, c))
+    player->set_position(nr, c);
 }
 
 void Farm::move_player_left() {
   int r = player->row();
   int c = player->column();
   int nc = c - 1;
-  if (in_bounds(r, nc)) player->set_position(r, nc);
+  if (in_bounds(r, nc))
+    player->set_position(r, nc);
 }
 
 void Farm::move_player_right() {
   int r = player->row();
   int c = player->column();
   int nc = c + 1;
-  if (in_bounds(r, nc)) player->set_position(r, nc);
+  if (in_bounds(r, nc))
+    player->set_position(r, nc);
 }
 
 void Farm::end_day() {
@@ -79,18 +83,24 @@ std::string Farm::get_symbol(int r, int c) {
 }
 
 bool Farm::plant_if_empty(int r, int c, Plot* plot) {
-  Soil* soil = dynamic_cast<Soil*>(plots.at(r).at(c));
-  if (!soil) { delete plot; return false; }
-  delete soil;
+  std::string current = plots.at(r).at(c)->symbol();
+  if (current != ".") {
+    delete plot;
+    return false;
+  }
+
+  delete plots[r][c];
   plots[r][c] = plot;
   return true;
 }
 
 bool Farm::harvest_at(int r, int c) {
-  Carrot* carrot = dynamic_cast<Carrot*>(plots.at(r).at(c));
-  if (!carrot) return false;
-  if (!carrot->is_mature()) return false;
-  delete carrot;
+  std::string current = plots.at(r).at(c)->symbol();
+
+  if (current != "V") {
+    return false;
+  }
+  delete plots[r][c];
   plots[r][c] = new Soil();
   return true;
 }

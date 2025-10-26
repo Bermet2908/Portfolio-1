@@ -34,3 +34,4 @@ TEST_CASE( "it pretty prints a 2x2 farm" ) {
     FarmPrinter printer(&farm);
     REQUIRE( printer.pp() == "@ . \n. . \n" );
 }
+

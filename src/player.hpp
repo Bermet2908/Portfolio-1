@@ -8,7 +8,5 @@ private:
 public:
     int row();
     int column();
-    void move_right();
-    void move_down();
     void set_position(int r, int c);
 };

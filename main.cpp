@@ -27,35 +27,36 @@ int main() {
             break;
         if (key >= 'A' && key <= 'Z') key = char(key - 'A' + 'a');
 
-        switch (key) {
-            case 'w': farm.move_player_up();
-                break;
-            case 'a': farm.move_player_left();
-                break;
-            case 's': farm.move_player_down();
-                break;
-            case 'd': farm.move_player_right();
-                break;
-
-            case 'q': game_in_progress = false;
-                break;
-            case 'p': {
-                farm.plant_if_empty(player.row(), player.column(), new Carrot());
-            } break;
-
-            case 'h': {
-                farm.harvest_at(player.row(), player.column());
-            } break;
-
-            case 'e': {
-                farm.end_day();
-            } break;
-
-            case '?': printLegend(); break;
-
-
-            default:
-                break;
+        if (key == 'w') {
+            farm.move_player_up();
         }
+        else if (key == 'a') {
+            farm.move_player_left();
+        }
+        else if (key == 's') {
+            farm.move_player_down();
+        }
+        else if (key == 'd') {
+            farm.move_player_right();
+        }
+        else if (key == 'p') {
+            farm.plant_if_empty(player.row(), player.column(), new Carrot());
+        }
+        else if (key == 'h') {
+            farm.harvest_at(player.row(), player.column());
+        }
+        else if (key == 'e') {
+            farm.end_day();
+        }
+        else if (key == 'q') {
+            game_in_progress = false;
+        }
+        else if (key == '?') {
+            printLegend();
+        }
+        else {
+            std::cout << "Unknown command. Type ? for help.\n";
+        }
+
     }
 }

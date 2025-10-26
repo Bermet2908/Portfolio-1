@@ -28,8 +28,8 @@ public:
     void end_day();
 
     std::string get_symbol(int row, int column);
-    bool plant_if_empty(int row, int column, Plot *plot);
-    bool harvest_at (int row, int column);
+    bool plant_if_empty(int r, int c, Plot *plot);
+    bool harvest_at(int r, int c);
 
     void move_player_up();
     void move_player_down();
