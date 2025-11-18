@@ -4,6 +4,7 @@
 #include "src/farm.hpp"
 #include "src/farm_printer.hpp"
 #include "src/carrot.hpp"
+#include "src/lettuce.hpp"
 #include "src/ansi_clear.hpp"
 #include "src/legend.hpp"
 
@@ -21,7 +22,7 @@ int main() {
 
         std::cout << "Day: " << farm.current_day() << "\n";
         std::cout << printer.pp() << std::endl;
-        std::cout << "(W/A/S/D to move, P, H, E, Q to quit) > ";
+        std::cout << "(W/A/S/D to move) > ";
 
         if (!(std::cin >> key))
             break;
@@ -39,9 +40,13 @@ int main() {
         else if (key == 'd') {
             farm.move_player_right();
         }
-        else if (key == 'p') {
+        else if (key == 'c') {
             farm.plant_if_empty(player.row(), player.column(), new Carrot());
         }
+        else if (key == 'l') {
+            farm.plant_if_empty(player.row(), player.column(), new Lettuce());
+        }
+
         else if (key == 'h') {
             farm.harvest_at(player.row(), player.column());
         }

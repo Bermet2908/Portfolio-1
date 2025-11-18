@@ -3,5 +3,13 @@
 #include "carrot.hpp"
 
 std::string Carrot::symbol() {
-    return (age >= 1) ? "V" : "v";
+    if (age == 0) {
+        return ":";   // tilled soil
+    }
+    else if (age == 1) {
+        return "v";   // seedling
+    }
+    else {
+        return "V";   // mature carrot
+    }
 }

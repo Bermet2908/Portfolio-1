@@ -97,10 +97,12 @@ bool Farm::plant_if_empty(int r, int c, Plot* plot) {
 bool Farm::harvest_at(int r, int c) {
   std::string current = plots.at(r).at(c)->symbol();
 
-  if (current != "V") {
+  if (current != "V" && current != "L") {
     return false;
   }
+
   delete plots[r][c];
   plots[r][c] = new Soil();
   return true;
 }
+

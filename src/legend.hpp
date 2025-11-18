@@ -18,7 +18,8 @@ cout<< "How to move your character?\n"
     << "Use these keys to move your farmer around the farm:\n";
 
     cout << "W/A/S/D - Move Up/Left/Down/Right\n";
-    cout << "P - Plant a vegetable\n";
+    cout << "C - Plant a carrot\n";
+    cout << "L - Plant lettuce\n";
     cout << "H - Harvest vegetables\n";
     cout << "E - End the day\n";
     cout << "Q - Quit game\n";
