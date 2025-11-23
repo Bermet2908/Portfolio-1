@@ -5,6 +5,9 @@
 #include "src/farm_printer.hpp"
 #include "src/carrot.hpp"
 #include "src/lettuce.hpp"
+#include "src/spinach.hpp"
+#include "src/beet.hpp"
+#include "src/brussels_sprouts.hpp"
 #include "src/ansi_clear.hpp"
 #include "src/legend.hpp"
 
@@ -40,15 +43,28 @@ int main() {
         else if (key == 'd') {
             farm.move_player_right();
         }
-        else if (key == 'c') {
+        else if (key == '1') {
             farm.plant_if_empty(player.row(), player.column(), new Carrot());
         }
-        else if (key == 'l') {
+        else if (key == '2') {
             farm.plant_if_empty(player.row(), player.column(), new Lettuce());
         }
+        else if (key == '3') {
+            farm.plant_if_empty(player.row(), player.column(), new Spinach());
+        }
+        else if (key == '4') {
+            farm.plant_if_empty(player.row(), player.column(), new Beet());
+        }
+        else if (key == '5') {
+            farm.plant_if_empty(player.row(), player.column(), new BrusselsSprouts());
+        }
+
 
         else if (key == 'h') {
             farm.harvest_at(player.row(), player.column());
+        }
+        else if (key == 'f') {
+            farm.water_at(player.row(), player.column());
         }
         else if (key == 'e') {
             farm.end_day();

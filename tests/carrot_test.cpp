@@ -5,22 +5,24 @@
 
 #include "../src/carrot.hpp"
 
-TEST_CASE( "it returns a v as its when it is a seedling" ) {
-  Carrot carrot;
-  REQUIRE( carrot.symbol() == "v" );
+TEST_CASE("carrot starts as tilled soil and is not mature") {
+    Carrot c;
+    REQUIRE(c.symbol() == ":");
+    REQUIRE(c.is_mature() == false);
 }
 
-TEST_CASE("carrot becomes mature V after one day") {
-  Carrot c;
-  c.tick();
-  REQUIRE(c.is_mature() == true);
-  REQUIRE(c.symbol() == "V");
+TEST_CASE("carrot becomes a seedling after one day") {
+    Carrot c;
+    c.tick(); // 1 day
+    REQUIRE(c.symbol() == "v");
+    REQUIRE(c.is_mature() == false);
 }
 
-TEST_CASE("carrot stays mature V after many days") {
-  Carrot c;
-  c.tick();
-  for (int i = 0; i < 10; ++i) c.tick();
-  REQUIRE(c.is_mature() == true);
-  REQUIRE(c.symbol() == "V");
+TEST_CASE("carrot becomes mature V after two days") {
+    Carrot c;
+    c.tick(); // day 1
+    c.tick(); // day 2
+    REQUIRE(c.symbol() == "V");
+    REQUIRE(c.is_mature() == true);
 }
+

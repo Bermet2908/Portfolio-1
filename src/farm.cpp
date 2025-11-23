@@ -6,15 +6,19 @@
 #include "carrot.hpp"
 
 Farm::Farm(int rows, int columns, Player *player) : rows(rows), columns(columns), player(player) {
-  for(int i = 0; i < rows; i++) {
+  for (int i = 0; i < rows; i++) {
     std::vector<Plot *> row;
-    for(int j = 0; j < columns; j++) {
+    std::vector<bool> water_row;
+    for (int j = 0; j < columns; j++) {
       Soil *soil = new Soil();
       row.push_back(soil);
+      water_row.push_back(false);   // not watered at start
     }
     plots.push_back(row);
+    watered.push_back(water_row);
   }
 }
+
 
 Farm::~Farm() {
   for (auto& row : plots) {
@@ -70,12 +74,21 @@ void Farm::move_player_right() {
 
 void Farm::end_day() {
   day += 1;
-  for (auto& row : plots) {
-    for (auto* p : row) {
-      p->tick();
+
+  for (int r = 0; r < rows; ++r) {
+    for (int c = 0; c < columns; ++c) {
+      // Normal +1 day growth
+      plots[r][c]->tick();
+
+      // If this tile was watered, grow one extra day
+      if (watered[r][c]) {
+        plots[r][c]->tick();
+        watered[r][c] = false;  // reset for the new day
+      }
     }
   }
 }
+
 
 std::string Farm::get_symbol(int r, int c) {
   if (player->row() == r && player->column() == c) return "@";
@@ -97,7 +110,8 @@ bool Farm::plant_if_empty(int r, int c, Plot* plot) {
 bool Farm::harvest_at(int r, int c) {
   std::string current = plots.at(r).at(c)->symbol();
 
-  if (current != "V" && current != "L") {
+  // Only harvest mature plants
+  if (current != "V" && current != "L" && current != "S" && current != "B" && current != "R") {
     return false;
   }
 
@@ -105,4 +119,29 @@ bool Farm::harvest_at(int r, int c) {
   plots[r][c] = new Soil();
   return true;
 }
+
+bool Farm::water_at(int r, int c) {
+  // Safety: make sure it's inside the farm
+  if (!in_bounds(r, c)) {
+    return false;
+  }
+
+  std::string current = plots.at(r).at(c)->symbol();
+
+  // If it's bare soil, nothing happens
+  if (current == ".") {
+    return false;
+  }
+
+  // If already watered this day, do nothing extra
+  if (watered[r][c]) {
+    return false;
+  }
+
+  // Mark this tile as watered for today
+  watered[r][c] = true;
+  return true;
+}
+
+
 

@@ -13,6 +13,7 @@ private:
     int day = 1;
     Player *player;
     std::vector<std::vector<Plot *>> plots;
+    std::vector<std::vector<bool>> watered;  // was this tile watered today?
     bool in_bounds(int r, int c) const;
 
 public:
@@ -30,6 +31,7 @@ public:
     std::string get_symbol(int row, int column);
     bool plant_if_empty(int r, int c, Plot *plot);
     bool harvest_at(int r, int c);
+    bool water_at(int r, int c);
 
     void move_player_up();
     void move_player_down();
