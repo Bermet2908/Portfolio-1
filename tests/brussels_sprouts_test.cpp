@@ -11,7 +11,7 @@ TEST_CASE("brussels sprouts start as tilled soil and are not mature") {
     REQUIRE(b.is_mature() == false);
 }
 
-TEST_CASE("brussels sprouts become seedlings after five days") {
+TEST_CASE("brussels sprouts become seedlings after 5 days") {
     BrusselsSprouts b;
     for (int i = 0; i < 5; ++i) {
         b.tick();
@@ -20,7 +20,7 @@ TEST_CASE("brussels sprouts become seedlings after five days") {
     REQUIRE(b.is_mature() == false);
 }
 
-TEST_CASE("brussels sprouts become mature after fifteen days") {
+TEST_CASE("brussels sprouts become mature after 15 days") {
     BrusselsSprouts b;
     for (int i = 0; i < 15; ++i) {
         b.tick();

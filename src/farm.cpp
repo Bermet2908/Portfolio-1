@@ -12,7 +12,7 @@ Farm::Farm(int rows, int columns, Player *player) : rows(rows), columns(columns)
     for (int j = 0; j < columns; j++) {
       Soil *soil = new Soil();
       row.push_back(soil);
-      water_row.push_back(false);   // not watered at start
+      water_row.push_back(false);
     }
     plots.push_back(row);
     watered.push_back(water_row);
@@ -77,13 +77,11 @@ void Farm::end_day() {
 
   for (int r = 0; r < rows; ++r) {
     for (int c = 0; c < columns; ++c) {
-      // Normal +1 day growth
       plots[r][c]->tick();
 
-      // If this tile was watered, grow one extra day
       if (watered[r][c]) {
         plots[r][c]->tick();
-        watered[r][c] = false;  // reset for the new day
+        watered[r][c] = false;
       }
     }
   }
@@ -110,7 +108,6 @@ bool Farm::plant_if_empty(int r, int c, Plot* plot) {
 bool Farm::harvest_at(int r, int c) {
   std::string current = plots.at(r).at(c)->symbol();
 
-  // Only harvest mature plants
   if (current != "V" && current != "L" && current != "S" && current != "B" && current != "R") {
     return false;
   }
@@ -121,24 +118,20 @@ bool Farm::harvest_at(int r, int c) {
 }
 
 bool Farm::water_at(int r, int c) {
-  // Safety: make sure it's inside the farm
   if (!in_bounds(r, c)) {
     return false;
   }
 
   std::string current = plots.at(r).at(c)->symbol();
 
-  // If it's bare soil, nothing happens
   if (current == ".") {
     return false;
   }
 
-  // If already watered this day, do nothing extra
   if (watered[r][c]) {
     return false;
   }
 
-  // Mark this tile as watered for today
   watered[r][c] = true;
   return true;
 }

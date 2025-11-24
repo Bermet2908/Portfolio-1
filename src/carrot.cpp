@@ -4,12 +4,12 @@
 
 std::string Carrot::symbol() {
     if (age == 0) {
-        return ":";   // tilled soil
+        return ":";
     }
     else if (age == 1) {
-        return "v";   // seedling
+        return "v";
     }
     else {
-        return "V";   // mature carrot
+        return "V";
     }
 }

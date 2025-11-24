@@ -11,7 +11,7 @@ TEST_CASE("lettuce starts as tilled soil and is not mature") {
     REQUIRE(l.is_mature() == false);
 }
 
-TEST_CASE("lettuce becomes a seedling after two days") {
+TEST_CASE("lettuce becomes a seedling after 2 days") {
     Lettuce l;
     l.tick(); // day 1
     REQUIRE(l.symbol() == ":");
@@ -20,7 +20,7 @@ TEST_CASE("lettuce becomes a seedling after two days") {
     REQUIRE(l.is_mature() == false);
 }
 
-TEST_CASE("lettuce becomes mature L after four days") {
+TEST_CASE("lettuce becomes mature L after 4 days") {
     Lettuce l;
     for (int i = 0; i < 4; ++i) {
         l.tick();

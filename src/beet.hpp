@@ -5,17 +5,15 @@
 
 class Beet : public Plot {
 private:
-    int age = 0;   // days since planting
-
+    int age = 0;
 public:
     std::string symbol() override;
 
     void tick() override {
-        age += 1;  // one day passes
+        age += 1;
     }
 
     bool is_mature() const {
-        // 2 days to sprout + 5 days to mature = 7
         return age >= 7;
     }
 };

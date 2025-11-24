@@ -11,7 +11,7 @@ TEST_CASE("spinach starts as tilled soil and is not mature") {
     REQUIRE(s.is_mature() == false);
 }
 
-TEST_CASE("spinach becomes a seedling after two days") {
+TEST_CASE("spinach becomes a seedling after 2 days") {
     Spinach s;
     s.tick(); // day 1
     REQUIRE(s.symbol() == ":");
@@ -20,7 +20,7 @@ TEST_CASE("spinach becomes a seedling after two days") {
     REQUIRE(s.is_mature() == false);
 }
 
-TEST_CASE("spinach becomes mature S after five days") {
+TEST_CASE("spinach becomes mature S after 5 days") {
     Spinach s;
     for (int i = 0; i < 5; ++i) {
         s.tick();

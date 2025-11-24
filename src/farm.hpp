@@ -13,7 +13,7 @@ private:
     int day = 1;
     Player *player;
     std::vector<std::vector<Plot *>> plots;
-    std::vector<std::vector<bool>> watered;  // was this tile watered today?
+    std::vector<std::vector<bool>> watered;
     bool in_bounds(int r, int c) const;
 
 public:

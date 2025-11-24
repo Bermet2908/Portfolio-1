@@ -11,7 +11,7 @@ TEST_CASE("beet starts as tilled soil and is not mature") {
     REQUIRE(b.is_mature() == false);
 }
 
-TEST_CASE("beet becomes a seedling after two days") {
+TEST_CASE("beet becomes a seedling after 2 days") {
     Beet b;
     b.tick(); // day 1
     REQUIRE(b.symbol() == ":");
@@ -20,7 +20,7 @@ TEST_CASE("beet becomes a seedling after two days") {
     REQUIRE(b.is_mature() == false);
 }
 
-TEST_CASE("beet becomes mature B after seven days") {
+TEST_CASE("beet becomes mature B after 7 days") {
     Beet b;
     for (int i = 0; i < 7; ++i) {
         b.tick();

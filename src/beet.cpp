@@ -1,16 +1,13 @@
 #include "beet.hpp"
 
 std::string Beet::symbol() {
-    // Days 0–1: still underground
     if (age < 2) {
-        return ":";   // tilled soil
+        return ":";
     }
 
-    // Days 2–6: seedling
     if (age < 7) {
-        return "v";   // beet seedling
+        return "v";
     }
 
-    // Day 7+: mature beet
     return "B";
 }

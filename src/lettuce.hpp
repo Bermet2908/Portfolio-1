@@ -6,7 +6,6 @@
 class Lettuce : public Plot {
 private:
     int age = 0;
-
 public:
     std::string symbol() override;
 

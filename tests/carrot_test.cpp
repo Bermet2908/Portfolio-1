@@ -11,14 +11,14 @@ TEST_CASE("carrot starts as tilled soil and is not mature") {
     REQUIRE(c.is_mature() == false);
 }
 
-TEST_CASE("carrot becomes a seedling after one day") {
+TEST_CASE("carrot becomes a seedling after 1 day") {
     Carrot c;
     c.tick(); // 1 day
     REQUIRE(c.symbol() == "v");
     REQUIRE(c.is_mature() == false);
 }
 
-TEST_CASE("carrot becomes mature V after two days") {
+TEST_CASE("carrot becomes mature V after 2 days") {
     Carrot c;
     c.tick(); // day 1
     c.tick(); // day 2
